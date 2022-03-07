@@ -30,6 +30,8 @@ const FormLogin = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
+    localStorage.setItem('mealsToken', 1);
+    localStorage.setItem('cocktailsToken', 1);
   };
 
   return (
