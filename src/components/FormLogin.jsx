@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const FormLogin = () => {
+  const history = useHistory();
   const [user, setUser] = useState({
     email: '',
     password: '',
   });
+  const { email, password } = user;
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -14,24 +18,26 @@ const FormLogin = () => {
     });
   };
 
-  const validEmail = (email) => {
+  const validEmail = (emailParam) => {
     // REFERÊNCIA
     // https://pt.stackoverflow.com/questions/1386/express%C3%A3o-regular-para-valida%C3%A7%C3%A3o-de-e-mail
     const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
-    return emailRegex.test(email);
+    return emailRegex.test(emailParam);
   };
 
   const handleDisabled = () => {
     const MINIMIUM_CARACTERS = 6;
-    const { email, password } = user;
     const isValid = validEmail(email);
     return password.length > MINIMIUM_CARACTERS && isValid;
   };
 
   const handleClick = (event) => {
     event.preventDefault();
+    const userObj = { email };
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
+    localStorage.setItem('user', JSON.stringify(userObj));
+    history.push('/foods');
   };
 
   return (
@@ -69,5 +75,9 @@ const FormLogin = () => {
     </section>
   );
 };
+
+FormLogin.propTypes = {
+  history: PropTypes.object,
+}.isRequired;
 
 export default FormLogin;
