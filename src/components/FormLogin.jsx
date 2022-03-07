@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FormLogin = () => {
-  const handleChange = (event) => {
-    console.log(event);
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+
+  const validEmail = (email) => {
+    // REFERÊNCIA
+    // https://pt.stackoverflow.com/questions/1386/express%C3%A3o-regular-para-valida%C3%A7%C3%A3o-de-e-mail
+    const emailRegex = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/;
+    return emailRegex.test(email);
+  };
+
+  const handleDisabled = () => {
+    const MINIMIUM_CARACTERS = 6;
+    const { email, password } = user;
+    const isValid = validEmail(email);
+    return password.length > MINIMIUM_CARACTERS && isValid;
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -29,8 +56,10 @@ const FormLogin = () => {
           />
         </label>
         <button
-          type="submit"
           data-testid="login-submit-btn"
+          type="submit"
+          disabled={ !handleDisabled() }
+          onClick={ handleClick }
         >
           Enter
         </button>
