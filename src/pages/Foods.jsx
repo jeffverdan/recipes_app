@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import MainCard from '../components/MainCard';
 import '../styles/Foods.css';
 
-const LIM_MAP = 11;
+const LIM_MAP = 12;
 
 export default function Foods() {
   const { apiData } = useContext(AppContext);
@@ -15,7 +15,7 @@ export default function Foods() {
     <div>
       <Header title="Foods" loadingSearch />
       <section className="container-foods">
-        { meals !== undefined && meals.slice(0, LIM_MAP).map((item) => (
+        { meals !== undefined && meals.slice(0, LIM_MAP).map((item, index) => (
         // <div key={ item.idMeal }>
         //   <h1>{item.strMeal}</h1>
         //   <img src={ item.strMealThumb } alt={ item.strMeal } />
@@ -26,6 +26,7 @@ export default function Foods() {
               idMeal={ item.idMeal }
               strMeal={ item.strMeal }
               strMealThumb={ item.strMealThumb }
+              index={ index }
             />
           </div>
         ))}
