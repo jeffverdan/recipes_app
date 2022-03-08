@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import Searchbar from './Searchbar';
 
 // Title muda de acordo com a página e loadingSearch oculta o search dependendo da página(Req 10)
 export default function Header({ title, loadingSearch }) {
@@ -43,7 +44,9 @@ export default function Header({ title, loadingSearch }) {
       )}
       {search && (
         <div className="searchConteiner">
-          <span data-testid="search-input">Barra de Busca</span>
+          <span data-testid="search-input">
+            <Searchbar />
+          </span>
         </div>
       )}
 
