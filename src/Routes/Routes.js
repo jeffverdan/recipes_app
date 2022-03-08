@@ -14,34 +14,36 @@ import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 
 // Existe dois router pro profile por causa do teste 10 e 11
-const Routes = () => (
-  <Switch>
-    <Route exact path="/" component={ Login } />
-    <Route exact path="/foods" component={ Foods } />
-    <Route exact path="/perfil" component={ Profile } />
-    <Route exact path="/profile" component={ Profile } />
-    <Route exact path="/drinks" component={ Drinks } />
-    <Route exact path="/explore" component={ Explore } />
-    <Route exact path="/explore/foods" component={ ExploreFoods } />
-    <Route exact path="/explore/drinks" component={ ExploreDrinks } />
-    <Route
-      exact
-      path="/explore/foods/ingredients"
-      component={ ExploreFoodsIngredients }
-    />
-    <Route
-      exact
-      path="/explore/drinks/ingredients"
-      component={ ExploreDrinksIngredients }
-    />
-    <Route
-      exact
-      path="/explore/foods/nationalities"
-      component={ ExploreFoodsArea }
-    />
-    <Route exact path="/done-recipes" component={ RecipesDone } />
-    <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
-  </Switch>
-);
+function Routes() {
+  return (
+    <Switch>
+      <Route exact path="/" component={ Login } />
+      <Route exact path="/foods" component={ Foods } />
+      <Route exact path="/perfil" component={ Profile } />
+      <Route exact path="/profile" component={ Profile } />
+      <Route exact path="/drinks" component={ Drinks } />
+      <Route exact path="/explore" component={ Explore } />
+      <Route exact path="/explore/foods" component={ ExploreFoods } />
+      <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+      <Route
+        exact
+        path="/explore/foods/ingredients"
+        component={ ExploreFoodsIngredients }
+      />
+      <Route
+        exact
+        path="/explore/drinks/ingredients"
+        component={ ExploreDrinksIngredients }
+      />
+      <Route
+        exact
+        path="/explore/foods/nationalities"
+        component={ ExploreFoodsArea }
+      />
+      <Route exact path="/done-recipes" component={ RecipesDone } />
+      <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+    </Switch>
+  );
+}
 
 export default Routes;
