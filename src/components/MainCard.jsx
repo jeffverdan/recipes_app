@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../styles/MainCard.css';
 
 const MainCard = ({ idMeal, strMeal, strMealThumb }) => (
-  <div key={ idMeal }>
-    <h3>{strMeal}</h3>
-    <img src={ strMealThumb } alt={ strMeal } width="30%" />
-  </div>
+  <section className="conteiner-mainCard">
+    <div className="container-img" key={ idMeal }>
+      <img src={ strMealThumb } alt={ strMeal } />
+      <div className="container-title">
+        <h3>{strMeal}</h3>
+      </div>
+    </div>
+  </section>
 
 );
 
