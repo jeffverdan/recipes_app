@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-// import AppContext from '../context/AppContext';
+import React, { useState, useContext } from 'react';
+import AppContext from '../context/AppContext';
 
 const Searchbar = () => {
   const [searchbarFilter, setSearchbarFilter] = useState('');
-  const [apiData, setApiData] = useState('');
+  const { apiData, setApiData } = useContext(AppContext);
 
   const fetchApiJson = async (url) => {
     const results = await fetch(url).then((response) => response.json());
@@ -76,7 +76,6 @@ const Searchbar = () => {
         </label>
 
         <label htmlFor="searchbar">
-          Name:
           <input
             type="text"
             id="searchbar"
@@ -84,6 +83,7 @@ const Searchbar = () => {
             data-testid="name-filter"
             onChange={ handleNameChange }
             value={ searchbarFilter }
+            placeholder="Search"
           />
         </label>
 

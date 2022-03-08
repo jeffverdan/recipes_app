@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import ApiProvider from './context/Provider';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <ApiProvider>
-    <App />
-  </ApiProvider>, document.getElementById('root'),
+  <BrowserRouter>
+    <ApiProvider>
+      <App />
+    </ApiProvider>
+  </BrowserRouter>, document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
