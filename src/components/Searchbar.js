@@ -12,7 +12,7 @@ const Searchbar = () => {
 
   const handleOnlyOneResponse = () => {
     const { meals } = apiData;
-    if (meals.length === 1) {
+    if (meals === 1) {
       console.log('FOUND ONE ONLY');
     }
   };
@@ -27,10 +27,13 @@ const Searchbar = () => {
       fetchApiJson(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchbarFilter}`);
       handleOnlyOneResponse();
     } else if (
-      document.getElementById('firstLetter').checked && searchbarFilter.length === 1) {
+      document.getElementById('firstLetter').checked
+      && searchbarFilter.length === 1) {
       // console.log('firstLetter');
       fetchApiJson(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchbarFilter}`);
-    } else if (searchbarFilter.length !== 1) {
+    } else if (
+      document.getElementById('firstLetter').checked
+      && searchbarFilter.length !== 1) {
       global.alert('Your search must have only 1 (one) character');
     } else { console.log('Please select'); }
   };
@@ -80,7 +83,7 @@ const Searchbar = () => {
             type="text"
             id="searchbar"
             name="searchbar"
-            data-testid="name-filter"
+            data-testid="search-input"
             onChange={ handleNameChange }
             value={ searchbarFilter }
             placeholder="Search"

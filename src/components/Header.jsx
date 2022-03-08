@@ -44,7 +44,7 @@ export default function Header({ title, loadingSearch }) {
       )}
       {search && (
         <div className="searchConteiner">
-          <span data-testid="search-input">
+          <span>
             <Searchbar />
           </span>
         </div>
