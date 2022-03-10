@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../styles/MainCard.css';
 
+
 const MainCard = ({ idMeal, strMeal, strMealThumb, index }) => (
   <section
     data-testid={ `${index}-recipe-card` }
@@ -23,6 +24,7 @@ const MainCard = ({ idMeal, strMeal, strMealThumb, index }) => (
 
 MainCard.propTypes = {
   idMeal: PropTypes.elementType.isRequired,
+  index: PropTypes.number.isRequired,
   strMeal: PropTypes.elementType.isRequired,
   strMealThumb: PropTypes.elementType.isRequired,
   index: PropTypes.string.isRequired,

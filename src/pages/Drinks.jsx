@@ -1,19 +1,22 @@
 import React, { useContext } from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
 import MainCard from '../components/MainCard';
 import AppContext from '../context/AppContext';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import MainCardDrinks from '../components/MainCard';
 
 const LIM_MAP = 12;
 const LIM_BUTTON = 5;
 
 export default function Drinks() {
-  const {
+  const { 
+    apiData,
     dataDrinks,
     dataCategoryDrinks,
     handleClick,
     handleAllClick,
   } = useContext(AppContext);
+  const { drinks } = apiData;
 
   return (
     <div>
