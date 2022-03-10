@@ -7,17 +7,21 @@ import MainCard from '../components/MainCard';
 export default function Foods() {
   const { apiData } = useContext(AppContext);
   const { meals } = apiData;
-  console.log(meals);
+  // const MAX_CARDS_NUMBS = 13;
+  // console.log(meals);
   return (
     <div>
       <Header title="Foods" loadingSearch />
-      { meals !== undefined && meals.map((item) => (
+      { meals !== undefined
+      && meals !== null
+      && meals.map((item, index) => (
         // <div key={ item.idMeal }>
         //   <h1>{item.strMeal}</h1>
         //   <img src={ item.strMealThumb } alt={ item.strMeal } />
         // </div>
         <MainCard
           key={ item.idMeal }
+          index={ index }
           idMeal={ item.idMeal }
           strMeal={ item.strMeal }
           strMealThumb={ item.strMealThumb }
