@@ -4,6 +4,8 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import MainCardDrinks from '../components/MainCard';
 
+const LIM_MAP = 12;
+
 export default function Drinks() {
   const { apiData } = useContext(AppContext);
   const { drinks } = apiData;
@@ -13,7 +15,7 @@ export default function Drinks() {
       <Header title="Drinks" loadingSearch />
       { drinks !== undefined
       && drinks !== null
-      && drinks.map((item, index) => (
+      && drinks.slice(0, LIM_MAP).map((item, index) => (
         // <div key={ item.idMeal }>
         //   <h1>{item.strMeal}</h1>
         //   <img src={ item.strMealThumb } alt={ item.strMeal } />
