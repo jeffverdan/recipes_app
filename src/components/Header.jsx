@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Searchbar from './Searchbar';
+import SearchbarDrinks from './SearchbarDrinks';
 
 // Title muda de acordo com a página e loadingSearch oculta o search dependendo da página(Req 10)
 export default function Header({ title, loadingSearch }) {
@@ -57,7 +59,10 @@ export default function Header({ title, loadingSearch }) {
       {search && (
         <div className="searchConteiner">
           <span>
-            <Searchbar />
+            <Switch>
+              <Route exact path="/foods" component={ Searchbar } />
+              <Route exact path="/drinks" component={ SearchbarDrinks } />
+            </Switch>
           </span>
         </div>
       )}

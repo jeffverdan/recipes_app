@@ -10,12 +10,15 @@ const LIM_MAP = 12;
 export default function Foods() {
   const { apiData } = useContext(AppContext);
   const { meals } = apiData;
-  console.log(meals);
+  // const MAX_CARDS_NUMBS = 13;
+  // console.log(meals);
   return (
     <div>
       <Header title="Foods" loadingSearch />
-      <section className="container-foods">
-        { meals !== undefined && meals.slice(0, LIM_MAP).map((item, index) => (
+      { meals !== undefined
+      && meals !== null
+      && meals.map((item, index) => (
+
         // <div key={ item.idMeal }>
         //   <h1>{item.strMeal}</h1>
         //   <img src={ item.strMealThumb } alt={ item.strMeal } />
