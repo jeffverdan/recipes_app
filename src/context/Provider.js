@@ -37,7 +37,6 @@ function Provider({ children }) {
     if (lastButton !== name) {
       if (type === 'meals') setDataMeals(data);
       if (type === 'drinks') setDataDrinks(data);
-      console.log('if 1');
       setLastButton(name);
     }
     if (lastButton === name) {
@@ -45,7 +44,6 @@ function Provider({ children }) {
       setDataMeals(meals);
       const drinks = await fetchDrinks();
       setDataDrinks(drinks);
-      console.log('if 2');
       setLastButton('');
     }
 
