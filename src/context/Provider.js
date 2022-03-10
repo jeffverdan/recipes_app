@@ -5,6 +5,7 @@ import fetchMeals, {
   fetchDrinks,
   fetchCategoryMeals,
   fetchCategoryDrinks,
+  fetchFilterByCategory,
 } from '../services/dataAPI';
 
 function Provider({ children }) {
@@ -14,23 +15,12 @@ function Provider({ children }) {
   const [dataDrinks, setDataDrinks] = useState([]);
   const [dataCategoryMeals, setDataCategoryMeals] = useState([]);
   const [dataCategoryDrinks, setDataCategoryDrinks] = useState([]);
+  // const [isDisplay, setIsDisplay] = useState(false);
+  // const [displayMeals, setDisplayMeals] = useState([]);
 
   // const url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
 
   // PARA CADA STATE, PRECISA PASSAR O CONTEXT PARA O CHILDREN NO RETURN
-  const contextValue = {
-    // FILIPE
-    apiData,
-    setApiData,
-    dataMeals,
-    dataDrinks,
-    dataCategoryMeals,
-    dataCategoryDrinks,
-    // JEFERSSON
-    // ABNER
-    // DANIEL
-    // JOHNATHAN
-  };
 
   // USE EFFECT PARA PEGAR OS DADOS DA API
   useEffect(() => {
@@ -46,6 +36,27 @@ function Provider({ children }) {
     }
     fetchData();
   }, []);
+
+  const handleClick = async (group, { target }) => {
+    const [type, data] = await fetchFilterByCategory(group, target.name);
+    if (type === 'meals') setDataMeals(data);
+    if (type === 'drinks') setDataDrinks(data);
+  };
+
+  const contextValue = {
+    // FILIPE
+    apiData,
+    setApiData,
+    dataMeals,
+    dataDrinks,
+    dataCategoryMeals,
+    dataCategoryDrinks,
+    handleClick,
+    // JEFERSSON
+    // ABNER
+    // DANIEL
+    // JOHNATHAN
+  };
 
   return (
     <AppContext.Provider value={ contextValue }>

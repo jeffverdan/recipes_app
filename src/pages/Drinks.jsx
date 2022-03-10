@@ -8,7 +8,7 @@ const LIM_MAP = 12;
 const LIM_BUTTON = 5;
 
 export default function Drinks() {
-  const { dataDrinks, dataCategoryDrinks } = useContext(AppContext);
+  const { dataDrinks, dataCategoryDrinks, handleClick } = useContext(AppContext);
 
   return (
     <div>
@@ -18,6 +18,8 @@ export default function Drinks() {
           <button
             data-testid={ `${strCategory}-category-filter` }
             key={ index }
+            name={ strCategory }
+            onClick={ (e) => handleClick('drinks', e) }
             type="button"
           >
             {strCategory}
