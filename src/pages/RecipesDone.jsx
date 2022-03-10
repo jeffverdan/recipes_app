@@ -31,6 +31,7 @@ export default function RecipesDone() {
           value="drink"
           type="button"
         // onClick={ handleClick }
+        // onClick={ handleClick }
         >
           Drinks
         </button>
