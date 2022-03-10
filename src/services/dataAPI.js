@@ -33,14 +33,12 @@ export const fetchFilterByCategory = async (group, category) => {
     const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`;
     const response = await fetch(url);
     const { meals } = await response.json();
-    console.log('meals', meals);
     return ['meals', meals];
   }
   if (group === 'drinks') {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
     const response = await fetch(url);
     const { drinks } = await response.json();
-    console.log('drinks', drinks);
     return ['drinks', drinks];
   }
 };

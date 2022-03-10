@@ -7,22 +7,16 @@ import fetchMeals, {
   fetchCategoryDrinks,
   fetchFilterByCategory,
 } from '../services/dataAPI';
-
+// Contribuições de Talison Santana
 function Provider({ children }) {
-  // STATES do useState
   const [apiData, setApiData] = useState([]);
   const [dataMeals, setDataMeals] = useState([]);
   const [dataDrinks, setDataDrinks] = useState([]);
   const [dataCategoryMeals, setDataCategoryMeals] = useState([]);
+
   const [dataCategoryDrinks, setDataCategoryDrinks] = useState([]);
-  // const [isDisplay, setIsDisplay] = useState(false);
-  // const [displayMeals, setDisplayMeals] = useState([]);
+  const [lastButton, setLastButton] = useState('');
 
-  // const url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
-
-  // PARA CADA STATE, PRECISA PASSAR O CONTEXT PARA O CHILDREN NO RETURN
-
-  // USE EFFECT PARA PEGAR OS DADOS DA API
   useEffect(() => {
     async function fetchData() {
       const meals = await fetchMeals();
@@ -39,8 +33,51 @@ function Provider({ children }) {
 
   const handleClick = async (group, { target }) => {
     const [type, data] = await fetchFilterByCategory(group, target.name);
-    if (type === 'meals') setDataMeals(data);
-    if (type === 'drinks') setDataDrinks(data);
+    const { name } = target;
+    if (lastButton !== name) {
+      if (type === 'meals') setDataMeals(data);
+      if (type === 'drinks') setDataDrinks(data);
+      console.log('if 1');
+      setLastButton(name);
+    }
+    if (lastButton === name) {
+      const meals = await fetchMeals();
+      setDataMeals(meals);
+      const drinks = await fetchDrinks();
+      setDataDrinks(drinks);
+      console.log('if 2');
+      setLastButton('');
+    }
+
+    // if (selected[target.name] === false) {
+    //   setSelected({
+    //     ...selected,
+    //     [name]: true,
+    //   });
+
+    //   console.log('if 1');
+    // }
+    // if (selected[target.name] === true) {
+    // setSelected({
+    //   ...selected,
+    //   [name]: false,
+    // });
+    // const meals = await fetchMeals();
+    // setDataMeals(meals);
+    // const drinks = await fetchDrinks();
+    // setDataDrinks(drinks);
+    // console.log('if 2');
+  };
+
+  const handleAllClick = async (type) => {
+    if (type === 'allDrinks') {
+      const drinks = await fetchDrinks();
+      setDataDrinks(drinks);
+    }
+    if (type === 'allMeals') {
+      const meals = await fetchMeals();
+      setDataMeals(meals);
+    }
   };
 
   const contextValue = {
@@ -52,6 +89,7 @@ function Provider({ children }) {
     dataCategoryMeals,
     dataCategoryDrinks,
     handleClick,
+    handleAllClick,
     // JEFERSSON
     // ABNER
     // DANIEL

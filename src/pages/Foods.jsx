@@ -9,9 +9,14 @@ const LIM_MAP = 12;
 const LIM_BUTTON = 5;
 
 export default function Foods() {
-  const { apiData, dataMeals, dataCategoryMeals, handleClick } = useContext(AppContext);
+  const {
+    apiData,
+    dataMeals,
+    dataCategoryMeals,
+    handleClick,
+    handleAllClick,
+  } = useContext(AppContext);
   const { meals } = apiData;
-
   return (
     <div>
       <Header title="Foods" loadingSearch />
@@ -33,6 +38,13 @@ export default function Foods() {
         ))}
       </section>
       <section>
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ () => handleAllClick('allMeals') }
+        >
+          All
+        </button>
         {dataCategoryMeals.slice(0, LIM_BUTTON).map(({ strCategory }, index) => (
           <button
             data-testid={ `${strCategory}-category-filter` }
