@@ -6,11 +6,11 @@ import MainCard from '../components/MainCard';
 import '../styles/Foods.css';
 
 const LIM_MAP = 12;
+const LIM_BUTTON = 5;
 
 export default function Foods() {
-  const { apiData } = useContext(AppContext);
+  const { apiData, dataMeals, dataCategoryMeals } = useContext(AppContext);
   const { meals } = apiData;
-  console.log(meals);
   return (
     <div>
       <Header title="Foods" loadingSearch />
@@ -26,6 +26,29 @@ export default function Foods() {
               idMeal={ item.idMeal }
               strMeal={ item.strMeal }
               strMealThumb={ item.strMealThumb }
+              index={ index }
+            />
+          </div>
+        ))}
+      </section>
+      <section>
+        {dataCategoryMeals.slice(0, LIM_BUTTON).map(({ strCategory }, index) => (
+          <button
+            data-testid={ `${strCategory}-category-filter` }
+            key={ index }
+            type="button"
+          >
+            {strCategory}
+          </button>
+        ))}
+      </section>
+      <section>
+        {dataMeals.slice(0, LIM_MAP).map((meal, index) => (
+          <div className="containerMainCard" key={ meal.idMeal }>
+            <MainCard
+              idMeal={ meal.idMeal }
+              strMeal={ meal.strMeal }
+              strMealThumb={ meal.strMealThumb }
               index={ index }
             />
           </div>
