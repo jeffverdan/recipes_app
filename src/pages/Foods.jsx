@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -40,15 +41,19 @@ export default function Foods() {
         ))}
       </section>
       <section>
-        {dataMeals.slice(0, LIM_MAP).map((meal, index) => (
-          <div className="containerMainCard" key={ meal.idMeal }>
-            <MainCard
-              idMeal={ meal.idMeal }
-              strMeal={ meal.strMeal }
-              strMealThumb={ meal.strMealThumb }
-              index={ index }
-            />
-          </div>
+        {dataMeals !== undefined
+        && dataMeals !== null
+        && dataMeals.slice(0, LIM_MAP).map((meal, index) => (
+          <Link key={ meal.idMeal } to={ `/foods/${meal.idMeal}` }>
+            <div className="containerMainCard" key={ meal.idMeal }>
+              <MainCard
+                idMeal={ meal.idMeal }
+                strMeal={ meal.strMeal }
+                strMealThumb={ meal.strMealThumb }
+                index={ index }
+              />
+            </div>
+          </Link>
         ))}
       </section>
       <Footer />

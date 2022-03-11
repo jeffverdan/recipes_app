@@ -34,10 +34,11 @@ const FormLogin = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    const userObj = { email };
+    const userObj = email;
+    const objectEmail = { email: userObj };
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify(userObj));
+    localStorage.setItem('user', JSON.stringify(objectEmail));
     history.push('/foods');
   };
 
