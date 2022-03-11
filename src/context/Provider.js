@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AppContext from './AppContext';
-
+import fetchMeals, {
+  fetchDrinks,
+  fetchCategoryMeals,
+  fetchCategoryDrinks,
+  fetchFilterByCategory,
+} from '../services/dataAPI';
+// Contribuições de Talison Santana
 function Provider({ children }) {
-  // STATES do useState
   const [apiData, setApiData] = useState([]);
   const [doneRecepie, setDoneRecepie] = useState([
     {
@@ -78,10 +83,73 @@ function Provider({ children }) {
       ],
     },
   ]);
+  const [dataMeals, setDataMeals] = useState([]);
+  const [dataDrinks, setDataDrinks] = useState([]);
+  const [dataCategoryMeals, setDataCategoryMeals] = useState([]);
 
-  // const url = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
+  const [dataCategoryDrinks, setDataCategoryDrinks] = useState([]);
+  const [lastButton, setLastButton] = useState('');
 
-  // PARA CADA STATE, PRECISA PASSAR O CONTEXT PARA O CHILDREN NO RETURN
+  useEffect(() => {
+    async function fetchData() {
+      const meals = await fetchMeals();
+      const drinks = await fetchDrinks();
+      const categoryMeals = await fetchCategoryMeals();
+      const categoryDrinks = await fetchCategoryDrinks();
+      setDataMeals(meals);
+      setDataDrinks(drinks);
+      setDataCategoryMeals(categoryMeals);
+      setDataCategoryDrinks(categoryDrinks);
+    }
+    fetchData();
+  }, []);
+  const handleClick = async (group, { target }) => {
+    const [type, data] = await fetchFilterByCategory(group, target.name);
+    const { name } = target;
+    if (lastButton !== name) {
+      if (type === 'meals') setDataMeals(data);
+      if (type === 'drinks') setDataDrinks(data);
+      setLastButton(name);
+    }
+    if (lastButton === name) {
+      const meals = await fetchMeals();
+      setDataMeals(meals);
+      const drinks = await fetchDrinks();
+      setDataDrinks(drinks);
+      setLastButton('');
+    }
+
+    // if (selected[target.name] === false) {
+    //   setSelected({
+    //     ...selected,
+    //     [name]: true,
+    //   });
+
+    //   console.log('if 1');
+    // }
+    // if (selected[target.name] === true) {
+    // setSelected({
+    //   ...selected,
+    //   [name]: false,
+    // });
+    // const meals = await fetchMeals();
+    // setDataMeals(meals);
+    // const drinks = await fetchDrinks();
+    // setDataDrinks(drinks);
+    // console.log('if 2');
+  };
+
+  const handleAllClick = async (type) => {
+    if (type === 'allDrinks') {
+      const drinks = await fetchDrinks();
+      setDataDrinks(drinks);
+    }
+    if (type === 'allMeals') {
+      const meals = await fetchMeals();
+      setDataMeals(meals);
+    }
+  };
+
   const contextValue = {
     // FILIPE
     apiData,
@@ -90,19 +158,15 @@ function Provider({ children }) {
     setDoneRecepie,
     // JEFERSSON
     // ABNER
+    dataMeals,
+    dataDrinks,
+    dataCategoryMeals,
+    dataCategoryDrinks,
+    handleClick,
+    handleAllClick,
     // DANIEL
     // JOHNATHAN
   };
-
-  // USE EFFECT PARA PEGAR OS DADOS DA API
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const results = await fetch(url).then((response) => response.json());
-  //     setApiData(results);
-  //     // console.log(results);
-  //   }
-  //   fetchData();
-  // }, []);
 
   return (
     <AppContext.Provider value={ contextValue }>
