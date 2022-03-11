@@ -20,6 +20,7 @@ export default function Foods() {
 
   return (
     <div>
+
       <Header title="Foods" loadingSearch />
       <section className="container-foods">
         {meals !== undefined && meals !== null && meals.slice(0, LIM_MAP).map((item, index) => (
