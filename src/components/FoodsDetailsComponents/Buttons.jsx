@@ -4,12 +4,11 @@ import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 // import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
-export default function Buttons({ mealData, type }) {
+export default function Buttons({ id, type }) {
   const [linkCopie, setLinkCopie] = useState(false);
 
   // Parte da lógica retirado do https://www.kindacode.com/article/react-copy-to-clipboard-when-click-a-button-link/
   const copieFunction = async (link) => {
-    console.log(mealData);
     await navigator.clipboard.writeText(link);
     setLinkCopie(true);
     const INTERVAL = 1000;
@@ -23,6 +22,7 @@ export default function Buttons({ mealData, type }) {
           data-testid="favorite-btn"
           type="button"
           onClick={ console.log('add favorite') }
+          src={ whiteHeartIcon }
         >
           <img
             src={ whiteHeartIcon } // Ainda precisa testar se já é favorito
@@ -39,7 +39,7 @@ export default function Buttons({ mealData, type }) {
               alt="Share Icon"
               data-testid="share-btn"
               src={ shareIcon }
-              onClick={ () => copieFunction(`http://localhost:3000/${type}/${mealData.idMeal}`) }
+              onClick={ () => copieFunction(`http://localhost:3000/${type}/${id}`) }
             />
           </div>
         )}
@@ -48,6 +48,6 @@ export default function Buttons({ mealData, type }) {
 }
 
 Buttons.propTypes = {
-  mealData: PropTypes.array,
+  id: PropTypes.string,
   type: PropTypes.string,
 }.isRequired;

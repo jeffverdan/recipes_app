@@ -8,40 +8,38 @@ import Title from '../components/FoodsDetailsComponents/Title';
 import Buttons from '../components/FoodsDetailsComponents/Buttons';
 
 // Link que retirei conhecimento do match https://dev.to/ishakmohmed/history-location-match-in-react-summarized-like-crazy-9d1
-export default function RecipesDetailsFood({ match }) {
+export default function RecipesDetailsDrinks({ match }) {
   const [filterID, setFilterID] = useState([]);
   const [youtubeID, setYoutubeID] = useState([]); // Tive que colocar o ID do youtube no fetch, fora quebrava o cod
-  const idMeals = match.params.id; // Pega id que está no link
+  const idDrink = match.params.id; // Pega id que está no link
   const SIX = 6; // Numero de drinks pedidos na recomendação
   const {
-    allDrinks,
+    allMeals,
     doneRecipes,
     setInProgressRecipes,
   } = useContext(AppContext);
 
   async function getDataMeals(url) {
     const results = await fetch(url).then((response) => response.json());
-    const { meals: mealData } = results;
-    setFilterID(mealData[0]);
-    if (mealData[0].strYoutube !== null) {
-      setYoutubeID(mealData[0].strYoutube.replace('https://www.youtube.com/watch?v=', '')); // Gera ID do video do Youtube
+    const { drinks: drinkData } = results;
+    setFilterID(drinkData[0]);
+    if (drinkData[0].strVideo !== null) {
+      setYoutubeID(drinkData[0].strVideo.replace('https://www.youtube.com/watch?v=', '')); // Gera ID do video do Youtube
     }
   }
 
   useEffect(() => {
-    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeals}`;
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`;
     getDataMeals(url);
-  }, [idMeals]);
+  }, [idDrink]);
 
   const {
     strCategory,
-    strMeal,
-    strMealThumb,
+    strDrink,
+    strDrinkThumb,
     strInstructions,
-    strYoutube,
-    // strTags,
-    // strArea,
-    // dateModified,
+    strVideo,
+    strAlcoholic,
   } = filterID;
 
   // Logica retirada de https://stackoverflow.com/questions/37899422/splice-inside-object-keysobj-foreachfunctionindex
@@ -57,18 +55,6 @@ export default function RecipesDetailsFood({ match }) {
   const ingradientesAndMeasures = valuesApartIngredients.map((value, index) => value
   && value.concat(' - ', valuesApartMeasures[index]));
 
-  // const storageRecipes = {
-  //   id: idMeals,
-  //   type: 'comida',
-  //   nationality: strArea,
-  //   category: strCategory,
-  //   alcoholicOrNot: '',
-  //   name: strMeal,
-  //   image: strMealThumb,
-  //   doneDate: '',
-  //   tags: strTags,
-  // };
-
   // Inicia o inProgressRecipes quando vazio.
   if (!localStorage.inProgressRecipes) {
     localStorage.setItem('inProgressRecipes', JSON.stringify({
@@ -76,26 +62,25 @@ export default function RecipesDetailsFood({ match }) {
       meals: {},
     }));
   }
-
   // Retira do localStarage os dados de meals
   const {
-    meals: foodsInProgress, cocktails,
+    cocktails: drinksInProgress, meals,
   } = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
   // Função quando click no botão salva os dados do inProgressRecipes
   function startRecipes() {
-    const id = { [idMeals]: valuesApartIngredients };
+    const id = { [idDrink]: valuesApartIngredients };
     const inProgress = {
-      cocktails: { ...cocktails }, meals: { ...foodsInProgress, ...id } };
+      cocktails: { ...drinksInProgress, ...id }, meals: { ...meals } };
     setInProgressRecipes([inProgress]);
     localStorage.setItem('inProgressRecipes', JSON.stringify(inProgress));
   }
 
   return (
     <div>
-      <Title title={ strMeal } img={ strMealThumb } />
-      <Buttons recipeData={ idMeals } type="foods" />
-      <h3 data-testid="recipe-category">{ strCategory }</h3>
+      <Title title={ strDrink } img={ strDrinkThumb } />
+      <Buttons recipeData={ idDrink } type="drinks" />
+      <h3 data-testid="recipe-category">{` ${strCategory} - ${strAlcoholic} `}</h3>
 
       <div>
         <p>Ingredients:</p>
@@ -116,10 +101,10 @@ export default function RecipesDetailsFood({ match }) {
       </div>
 
       <div>
-        <h3>Video in Youtube:</h3>
         {// Instalei um package npm do Youtube para construção do player https://www.npmjs.com/package/react-youtube
-          strYoutube !== null && (
+          strVideo !== null && (
             <div data-testid="video">
+              <h3>Video in Youtube:</h3>
               <YouTube
                 videoId={ youtubeID }
                 data-testid="video"
@@ -131,20 +116,20 @@ export default function RecipesDetailsFood({ match }) {
       <div>
         {/* Inicio do Carousel do Bootstrap */}
         <Carousel>
-          { allDrinks.slice(0, SIX).map((drink, index) => (
-            <Carousel.Item key={ drink.idDrink }>
-              <Link to={ `/drinks/${drink.idDrink}` } key={ index }>
+          { allMeals.slice(0, SIX).map((meal, index) => (
+            <Carousel.Item key={ meal.idMeal }>
+              <Link to={ `/foods/${meal.idMeal}` } key={ index }>
                 <img
                   data-testid={ `${index}-recomendation-card` }
                   className="d-block w-100"
-                  src={ drink.strDrinkThumb }
-                  alt={ drink.strDrink }
+                  src={ meal.strMealThumb }
+                  alt={ meal.strMeal }
                 />
                 <Carousel.Caption>
                   <h4
                     data-testid={ `${index}-recomendation-title` }
                   >
-                    { drink.strDrink }
+                    { meal.strMeal }
                   </h4>
                 </Carousel.Caption>
               </Link>
@@ -191,6 +176,6 @@ export default function RecipesDetailsFood({ match }) {
   );
 }
 
-RecipesDetailsFood.propTypes = {
+RecipesDetailsDrinks.propTypes = {
   match: PropTypes.object,
 }.isRequired;

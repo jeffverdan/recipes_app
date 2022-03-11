@@ -13,6 +13,7 @@ import ExploreFoodsArea from '../pages/ExploreFoodsArea';
 import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
 import RecipesDetailsFood from '../pages/RecipeDetailsFood';
+import RecipesDetailsDrinks from '../pages/RecipeDetailsDrinks';
 
 // Existe dois router pro profile por causa do teste 10 e 11
 function Routes() {
@@ -44,6 +45,7 @@ function Routes() {
       <Route exact path="/done-recipes" component={ RecipesDone } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
       <Route exact path="/foods/:id?" component={ RecipesDetailsFood } />
+      <Route exact path="/drinks/:id?" component={ RecipesDetailsDrinks } />
     </Switch>
   );
 }
