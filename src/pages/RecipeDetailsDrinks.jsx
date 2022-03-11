@@ -114,7 +114,7 @@ export default function RecipesDetailsDrinks({ match }) {
         }
       </div>
       <div>
-        {/* Inicio do Carousel do Bootstrap */}
+        {/* Inicio do Carousel do Bootstrap   */}
         <Carousel>
           { allMeals.slice(0, SIX).map((meal, index) => (
             <Carousel.Item key={ meal.idMeal }>
