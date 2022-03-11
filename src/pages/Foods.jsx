@@ -10,36 +10,15 @@ const LIM_BUTTON = 5;
 
 export default function Foods() {
   const {
-    apiData,
     dataMeals,
     dataCategoryMeals,
     handleClick,
     handleAllClick,
   } = useContext(AppContext);
-  const { meals } = apiData;
 
   return (
     <div>
-
       <Header title="Foods" loadingSearch />
-      <section className="container-foods">
-        {meals !== undefined && meals !== null && meals.slice(0, LIM_MAP).map((item, index) => (
-          // <div key={ item.idMeal }>
-          //   <h1>{item.strMeal}</h1>
-          //   <img src={ item.strMealThumb } alt={ item.strMeal } />
-          // </div>
-
-          <div className="containerMainCard" key={ item.idMeal }>
-            <MainCard
-              /* key={ item.idMeal } */
-              idMeal={ item.idMeal }
-              strMeal={ item.strMeal }
-              strMealThumb={ item.strMealThumb }
-              index={ index }
-            />
-          </div>
-        ))}
-      </section>
       <section>
         <button
           type="button"

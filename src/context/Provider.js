@@ -9,6 +9,7 @@ import fetchMeals, {
 } from '../services/dataAPI';
 // Contribuições de Talison Santana
 function Provider({ children }) {
+  // STATES do useState
   const [apiData, setApiData] = useState([]);
   const [doneRecepie, setDoneRecepie] = useState([
     {
@@ -20,17 +21,17 @@ function Provider({ children }) {
           strCategory: 'Vegetarian',
           strArea: 'Italian',
           strInstructions: 'Bring a large pot of water to a boil. '
-+ 'Add kosher salt to the boiling water,'
+            + 'Add kosher salt to the boiling water,'
             + 'then add the pasta. Cook according to the package '
-+ 'instructions, about 9 minutes.'
+            + 'instructions, about 9 minutes.'
             + '\r\nIn a large skillet over medium-high heat, add '
-+ 'the olive oil and heat until the oil starts'
+            + 'the olive oil and heat until the oil starts'
             + 'to shimmer. Add the garlic and cook, stirring, until '
-+ 'fragrant, 1 to 2 minutes. Add the chopped tomatoes, red '
+            + 'fragrant, 1 to 2 minutes. Add the chopped tomatoes, red '
             + 'chile flakes, Italian seasoning and salt and pepper to'
- + 'taste. Bring to a boil and cook for 5 minutes. Remove '
+            + 'taste. Bring to a boil and cook for 5 minutes. Remove '
             + 'from the heat and add the chopped basil.\r\nDrain the '
-+ 'pasta and add it to the sauce. Garnish with Parmigiano-'
+            + 'pasta and add it to the sauce. Garnish with Parmigiano-'
             + 'Reggiano flakes and more basil and serve warm.',
           strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
           strTags: 'Pasta,Curry',
@@ -86,9 +87,10 @@ function Provider({ children }) {
   const [dataMeals, setDataMeals] = useState([]);
   const [dataDrinks, setDataDrinks] = useState([]);
   const [dataCategoryMeals, setDataCategoryMeals] = useState([]);
-
   const [dataCategoryDrinks, setDataCategoryDrinks] = useState([]);
   const [lastButton, setLastButton] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -156,10 +158,16 @@ function Provider({ children }) {
     setApiData,
     doneRecepie,
     setDoneRecepie,
+    email,
+    setEmail,
+    password,
+    setPassword,
     // JEFERSSON
     // ABNER
     dataMeals,
+    setDataMeals,
     dataDrinks,
+    setDataDrinks,
     dataCategoryMeals,
     dataCategoryDrinks,
     handleClick,

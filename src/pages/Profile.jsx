@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import AppContext from '../context/AppContext';
 
-const jsonEmail = localStorage.getItem('user');
-const user = JSON.parse(jsonEmail);
+// const jsonEmail = localStorage.getItem('user');
+// const user = JSON.parse(jsonEmail);
 export default function Profile() {
   const history = useHistory();
+
+  const { email } = useContext(AppContext);
+  // const { password, setPassword } = useContext(AppContext);
+
   function handleClick({ target }) {
     if (target.value === 'done') {
       history.push('/done-recipes');
@@ -21,7 +26,7 @@ export default function Profile() {
   return (
     <div>
       <Header title="Profile" />
-      <h3 data-testid="profile-email">{user.email}</h3>
+      <h3 data-testid="profile-email">{email}</h3>
       <button
         data-testid="profile-done-btn"
         type="button"
