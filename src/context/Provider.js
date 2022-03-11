@@ -87,9 +87,10 @@ function Provider({ children }) {
   const [dataMeals, setDataMeals] = useState([]);
   const [dataDrinks, setDataDrinks] = useState([]);
   const [dataCategoryMeals, setDataCategoryMeals] = useState([]);
-
   const [dataCategoryDrinks, setDataCategoryDrinks] = useState([]);
   const [lastButton, setLastButton] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -157,11 +158,16 @@ function Provider({ children }) {
     setApiData,
     doneRecepie,
     setDoneRecepie,
+    email,
+    setEmail,
+    password,
+    setPassword,
     // JEFERSSON
     // ABNER
     dataMeals,
     setDataMeals,
     dataDrinks,
+    setDataDrinks,
     dataCategoryMeals,
     dataCategoryDrinks,
     handleClick,

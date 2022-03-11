@@ -5,15 +5,15 @@ import AppContext from '../context/AppContext';
 const Searchbar = () => {
   const [searchbarFilter, setSearchbarFilter] = useState('');
   const [radioButtonClicked, setRadioButtonClicked] = useState('');
-  const { apiData, setApiData } = useContext(AppContext);
+  const { apiData, setDataDrinks } = useContext(AppContext);
 
   const history = useHistory();
 
   const fetchApiJson = async (url) => {
     const results = await fetch(url).then((response) => response.json());
     const { drinks } = results;
-    console.log(drinks);
-    setApiData(results);
+    // console.log(drinks);
+    setDataDrinks(drinks);
   };
 
   useEffect(() => {

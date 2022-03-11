@@ -10,28 +10,16 @@ const LIM_BUTTON = 5;
 
 export default function Drinks() {
   const {
-    apiData,
     dataDrinks,
     dataCategoryDrinks,
     handleClick,
     handleAllClick,
   } = useContext(AppContext);
-  const { drinks } = apiData;
 
   return (
     <div>
       <Header title="Drinks" loadingSearch />
       <div>
-        { drinks !== undefined
-      && drinks !== null
-      && drinks.slice(0, LIM_MAP).map((item, index) => (
-        <MainCard
-          key={ item.idDrink }
-          index={ index }
-          idMeal={ item.idDrink }
-          strMeal={ item.strDrink }
-          strMealThumb={ item.strDrinkThumb }
-        />))}
         <section>
           <button
             type="button"
