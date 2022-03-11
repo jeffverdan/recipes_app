@@ -31,7 +31,7 @@ const MainCard = ({
         {strCategory}
       </h4>
       <h6 data-testid={ `${index}-horizontal-done-date` }>
-        xxxxxxxxxx
+        xxxxxxx
       </h6>
       <button type="button" data-testid={ `${index}-horizontal-share-btn` }>
         Share
