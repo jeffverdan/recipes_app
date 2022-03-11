@@ -19,7 +19,7 @@ export default function Header({ title, loadingSearch }) {
   return (
     <header>
       <div className="profileConteiner">
-        <Link to="/perfil">
+        <Link to="/profile">
           <img
             src={ profileIcon }
             aria-hidden
