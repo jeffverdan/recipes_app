@@ -9,6 +9,8 @@ import Header from '../components/Header';
 export default function Profile() {
   const history = useHistory();
 
+  const checkPerfil = history.location.pathname === '/profile';
+
   const [email, setEmail] = useState('');
   // const { password, setPassword } = useContext(AppContext);
 
@@ -32,7 +34,11 @@ export default function Profile() {
   return (
     <div>
       <Header title="Profile" />
-      <h3 data-testid="profile-email">{email}</h3>
+      <div>
+        {checkPerfil
+          ? <h3 data-testid="profile-email">{ email }</h3>
+          : null}
+      </div>
       <button
         data-testid="profile-done-btn"
         type="button"

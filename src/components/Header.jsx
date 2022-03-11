@@ -65,7 +65,6 @@ export default function Header({ title, loadingSearch }) {
           </span>
         </div>
       )}
-
     </header>
   );
 }

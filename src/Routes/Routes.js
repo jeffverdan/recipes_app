@@ -12,8 +12,8 @@ import ExploreDrinksIngredients from '../pages/ExploreDrinksIngredients';
 import ExploreFoodsArea from '../pages/ExploreFoodsArea';
 import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
-import RecipesDetailsDrinks from '../components/RecipesDetailsDrinks';
-import RecipesDetailsMeals from '../components/RecipesDetailsMeals';
+import RecipesDetailsDrinks from '../pages/RecipeDetailsDrinks';
+import RecipesDetailsMeals from '../pages/RecipesDetailsMeals';
 
 // Existe dois router pro profile por causa do teste 10 e 11
 function Routes() {
