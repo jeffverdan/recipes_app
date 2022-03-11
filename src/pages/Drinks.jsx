@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import MainCard from '../components/MainCard';
 import AppContext from '../context/AppContext';
 import Footer from '../components/Footer';
@@ -40,15 +41,19 @@ export default function Drinks() {
             </button>
           ))}
         </section>
-        {dataDrinks.slice(0, LIM_MAP).map((drink, index) => (
-          <div className="containerMainCard" key={ drink.idDrink }>
-            <MainCard
-              idMeal={ drink.idDrink }
-              strMeal={ drink.strDrink }
-              strMealThumb={ drink.strDrinkThumb }
-              index={ index }
-            />
-          </div>
+        {dataDrinks !== undefined
+        && dataDrinks !== null
+        && dataDrinks.slice(0, LIM_MAP).map((drink, index) => (
+          <Link key={ drink.idDrink } to={ `/drinks/${drink.idDrink}` }>
+            <div className="containerMainCard">
+              <MainCard
+                idMeal={ drink.idDrink }
+                strMeal={ drink.strDrink }
+                strMealThumb={ drink.strDrinkThumb }
+                index={ index }
+              />
+            </div>
+          </Link>
         ))}
         <Footer />
       </div>

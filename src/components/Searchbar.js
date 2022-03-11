@@ -5,7 +5,7 @@ import AppContext from '../context/AppContext';
 const Searchbar = () => {
   const [searchbarFilter, setSearchbarFilter] = useState('');
   const [radioButtonClicked, setRadioButtonClicked] = useState('');
-  const { apiData, setDataMeals } = useContext(AppContext);
+  const { dataMeals, setDataMeals } = useContext(AppContext);
 
   const history = useHistory();
 
@@ -18,20 +18,19 @@ const Searchbar = () => {
 
   useEffect(() => {
     const handleOnlyOneResponse = () => {
-      const { meals } = apiData;
       // console.log(apiData);
       // ? verifica se meals existe. Verifica se meals é um valor verdadeiro
-      if (meals !== undefined && meals?.length === 1) {
-        history.push(`/foods/${meals[0].idMeal}`);
-        // console.log('chegou');
+      if (dataMeals !== undefined && dataMeals?.length === 1) {
+        history.push(`/foods/${dataMeals[0].idMeal}`);
+        console.log('chegou');
       }
-      if (meals === null) {
+      if (dataMeals === null) {
         // history.push(`/foods/${meals[0].idMeal}`);
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
     };
     handleOnlyOneResponse();
-  }, [apiData]);
+  }, [dataMeals]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
