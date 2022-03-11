@@ -22,43 +22,6 @@ export default function Foods() {
     <div>
 
       <Header title="Foods" loadingSearch />
-<<<<<<< HEAD
-      { meals !== undefined
-      && meals !== null
-      && meals.slice(0, LIM_MAP).map((item, index) => (
-        // <div key={ item.idMeal }>
-        //   <h1>{item.strMeal}</h1>
-        //   <img src={ item.strMealThumb } alt={ item.strMeal } />
-        // </div>
-        <div className="containerMainCard" key={ item.idMeal }>
-          <MainCard
-            /* key={ item.idMeal } */
-            idMeal={ item.idMeal }
-            strMeal={ item.strMeal }
-            strMealThumb={ item.strMealThumb }
-            index={ index }
-          />
-        </div>
-      ))}
-=======
-      <section className="container-foods">
-        {meals !== undefined && meals !== null && meals.slice(0, LIM_MAP).map((item, index) => (
-          // <div key={ item.idMeal }>
-          //   <h1>{item.strMeal}</h1>
-          //   <img src={ item.strMealThumb } alt={ item.strMeal } />
-          // </div>
-
-          <div className="containerMainCard" key={ item.idMeal }>
-            <MainCard
-              /* key={ item.idMeal } */
-              idMeal={ item.idMeal }
-              strMeal={ item.strMeal }
-              strMealThumb={ item.strMealThumb }
-              index={ index }
-            />
-          </div>
-        ))}
-      </section>
       <section>
         <button
           type="button"
@@ -79,6 +42,26 @@ export default function Foods() {
           </button>
         ))}
       </section>
+
+      <section className="container-foods">
+        {meals !== undefined
+        && meals !== null && meals.slice(0, LIM_MAP).map((item, index) => (
+          // <div key={ item.idMeal }>
+          //   <h1>{item.strMeal}</h1>
+          //   <img src={ item.strMealThumb } alt={ item.strMeal } />
+          // </div>
+
+          <div className="containerMainCard" key={ item.idMeal }>
+            <MainCard
+              /* key={ item.idMeal } */
+              idMeal={ item.idMeal }
+              strMeal={ item.strMeal }
+              strMealThumb={ item.strMealThumb }
+              index={ index }
+            />
+          </div>
+        ))}
+      </section>
       <section>
         {dataMeals.slice(0, LIM_MAP).map((meal, index) => (
           <div className="containerMainCard" key={ meal.idMeal }>
@@ -91,7 +74,6 @@ export default function Foods() {
           </div>
         ))}
       </section>
->>>>>>> ba4382dd76c009b5f869e424b8fb0b27622e8ce5
       <Footer />
     </div>
   );
