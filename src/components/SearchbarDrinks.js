@@ -5,46 +5,46 @@ import AppContext from '../context/AppContext';
 const Searchbar = () => {
   const [searchbarFilter, setSearchbarFilter] = useState('');
   const [radioButtonClicked, setRadioButtonClicked] = useState('');
-  const { dataMeals, setDataMeals } = useContext(AppContext);
+  const { dataDrinks, setDataDrinks } = useContext(AppContext);
 
   const history = useHistory();
 
   const fetchApiJson = async (url) => {
     const results = await fetch(url).then((response) => response.json());
-    const { meals } = results;
-    // console.log(meals);
-    setDataMeals(meals);
+    const { drinks } = results;
+    // console.log(drinks);
+    setDataDrinks(drinks);
   };
 
   useEffect(() => {
     const handleOnlyOneResponse = () => {
       // console.log(apiData);
-      // ? verifica se meals existe. Verifica se meals é um valor verdadeiro
-      if (dataMeals !== undefined && dataMeals?.length === 1) {
-        history.push(`/foods/${dataMeals[0].idMeal}`);
-        console.log('chegou');
+      // ? verifica se drinks existe. Verifica se drinks é um valor verdadeiro
+      if (dataDrinks !== undefined && dataDrinks?.length === 1) {
+        history.push(`/drinks/${dataDrinks[0].idDrink}`);
+        // console.log('chegou');
       }
-      if (dataMeals === null) {
-        // history.push(`/foods/${meals[0].idMeal}`);
+      if (dataDrinks === null) {
+        // history.push(`/drinks/${drinks[0].idMeal}`);
         global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
     };
     handleOnlyOneResponse();
-  }, [dataMeals]);
+  }, [dataDrinks]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (radioButtonClicked === 'ingredient') {
       // console.log(searchbarFilter);
-      fetchApiJson(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchbarFilter}`);
+      fetchApiJson(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchbarFilter}`);
     } else if (radioButtonClicked === 'name') {
       // console.log('name');
-      fetchApiJson(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchbarFilter}`);
+      fetchApiJson(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchbarFilter}`);
     } else if (
       radioButtonClicked === 'firstLetter'
       && searchbarFilter.length === 1) {
       // console.log('firstLetter');
-      fetchApiJson(`https://www.themealdb.com/api/json/v1/1/search.php?f=${searchbarFilter}`);
+      fetchApiJson(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${searchbarFilter}`);
     } else if (
       radioButtonClicked === 'firstLetter'
       && searchbarFilter.length !== 1) {

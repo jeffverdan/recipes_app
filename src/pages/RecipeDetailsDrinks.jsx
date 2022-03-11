@@ -141,9 +141,9 @@ export default function RecipesDetailsDrinks({ match }) {
       {doneRecipes[0].doneDate === ''
         ? (
           <div>
-            {Object.keys(foodsInProgress).some((id) => Number(id) !== idMeals)
+            {Object.keys(drinksInProgress).some((id) => Number(id) !== idDrink)
               ? (
-                <Link to={ `/foods/${idMeals}/in-progress` }>
+                <Link to={ `/drinks/${idDrink}/in-progress` }>
                   <button
                     className="fixed-bottom"
                     type="button"
@@ -155,7 +155,7 @@ export default function RecipesDetailsDrinks({ match }) {
                 </Link>
               )
               : (
-                <Link to={ `/foods/${idMeals}/in-progress` }>
+                <Link to={ `/drinks/${idDrink}/in-progress` }>
                   <button
                     className="fixed-bottom"
                     type="button"

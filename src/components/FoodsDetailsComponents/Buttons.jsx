@@ -4,7 +4,7 @@ import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 // import blackHeartIcon from '../../images/blackHeartIcon.svg';
 
-export default function Buttons({ id, type }) {
+export default function Buttons({ recipeData, type }) {
   const [linkCopie, setLinkCopie] = useState(false);
 
   // Parte da lógica retirado do https://www.kindacode.com/article/react-copy-to-clipboard-when-click-a-button-link/
@@ -39,7 +39,7 @@ export default function Buttons({ id, type }) {
               alt="Share Icon"
               data-testid="share-btn"
               src={ shareIcon }
-              onClick={ () => copieFunction(`http://localhost:3000/${type}/${id}`) }
+              onClick={ () => copieFunction(`http://localhost:3000/${type}/${recipeData}`) }
             />
           </div>
         )}
@@ -48,6 +48,6 @@ export default function Buttons({ id, type }) {
 }
 
 Buttons.propTypes = {
-  id: PropTypes.string,
+  recipeData: PropTypes.string,
   type: PropTypes.string,
 }.isRequired;

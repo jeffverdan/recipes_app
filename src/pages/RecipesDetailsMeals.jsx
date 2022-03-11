@@ -8,7 +8,7 @@ import Title from '../components/FoodsDetailsComponents/Title';
 import Buttons from '../components/FoodsDetailsComponents/Buttons';
 
 // Link que retirei conhecimento do match https://dev.to/ishakmohmed/history-location-match-in-react-summarized-like-crazy-9d1
-export default function RecipesDetailsFood({ match }) {
+export default function RecipesDetailsMeals({ match }) {
   const [filterID, setFilterID] = useState([]);
   const [youtubeID, setYoutubeID] = useState([]); // Tive que colocar o ID do youtube no fetch, fora quebrava o cod
   const idMeals = match.params.id; // Pega id que está no link
@@ -191,6 +191,6 @@ export default function RecipesDetailsFood({ match }) {
   );
 }
 
-RecipesDetailsFood.propTypes = {
+RecipesDetailsMeals.propTypes = {
   match: PropTypes.object,
 }.isRequired;

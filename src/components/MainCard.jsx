@@ -23,9 +23,9 @@ const MainCard = ({ idMeal, strMeal, strMealThumb, index }) => (
 
 MainCard.propTypes = {
   idMeal: PropTypes.elementType.isRequired,
+  index: PropTypes.number.isRequired,
   strMeal: PropTypes.elementType.isRequired,
   strMealThumb: PropTypes.elementType.isRequired,
-  index: PropTypes.string.isRequired,
 };
 
 export default MainCard;

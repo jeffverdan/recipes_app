@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import AppContext from '../context/AppContext';
 
 const FormLogin = () => {
   const history = useHistory();
-  const [user, setUser] = useState({
-    email: '',
-    password: '',
-  });
-  const { email, password } = user;
+  // const { user, setUser } = useContext();
+  const { email, setEmail } = useContext(AppContext);
+  const { password, setPassword } = useContext(AppContext);
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
+  const handleChangeEmail = ({ target }) => {
+    const { value } = target;
+    setEmail(value);
+  };
+
+  const handleChangePassword = ({ target }) => {
+    const { value } = target;
+    setPassword(value);
   };
 
   const validEmail = (emailParam) => {
@@ -33,10 +34,11 @@ const FormLogin = () => {
 
   const handleClick = (event) => {
     event.preventDefault();
-    const userObj = { email };
+    const userObj = email;
+    const objectEmail = { email: userObj };
     localStorage.setItem('mealsToken', 1);
     localStorage.setItem('cocktailsToken', 1);
-    localStorage.setItem('user', JSON.stringify(userObj));
+    localStorage.setItem('user', JSON.stringify(objectEmail));
     history.push('/foods');
   };
 
@@ -50,7 +52,7 @@ const FormLogin = () => {
             id="email"
             name="email"
             placeholder="EMAIL"
-            onChange={ handleChange }
+            onChange={ handleChangeEmail }
           />
         </label>
         <label htmlFor="password">
@@ -60,7 +62,7 @@ const FormLogin = () => {
             id="password"
             name="password"
             placeholder="SENHA"
-            onChange={ handleChange }
+            onChange={ handleChangePassword }
           />
         </label>
         <button

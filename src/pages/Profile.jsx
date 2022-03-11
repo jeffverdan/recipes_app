@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+// import AppContext from '../context/AppContext';
 
-const jsonEmail = localStorage.getItem('user');
-const user = JSON.parse(jsonEmail);
+// const jsonEmail = localStorage.getItem('user');
+// const user = JSON.parse(jsonEmail);
 export default function Profile() {
   const history = useHistory();
+
+  const checkPerfil = history.location.pathname === '/profile';
+
+  const [email, setEmail] = useState('');
+  // const { password, setPassword } = useContext(AppContext);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    setEmail(user.email);
+    console.log(user);
+  }, []);
+
   function handleClick({ target }) {
     if (target.value === 'done') {
       history.push('/done-recipes');
@@ -21,7 +34,11 @@ export default function Profile() {
   return (
     <div>
       <Header title="Profile" />
-      <h3 data-testid="profile-email">{user.email}</h3>
+      <div>
+        {checkPerfil
+          ? <h3 data-testid="profile-email">{ email }</h3>
+          : null}
+      </div>
       <button
         data-testid="profile-done-btn"
         type="button"

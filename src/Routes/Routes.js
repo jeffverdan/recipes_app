@@ -12,8 +12,8 @@ import ExploreDrinksIngredients from '../pages/ExploreDrinksIngredients';
 import ExploreFoodsArea from '../pages/ExploreFoodsArea';
 import RecipesDone from '../pages/RecipesDone';
 import FavoriteRecipes from '../pages/FavoriteRecipes';
-import RecipesDetailsFood from '../pages/RecipeDetailsFood';
 import RecipesDetailsDrinks from '../pages/RecipeDetailsDrinks';
+import RecipesDetailsMeals from '../pages/RecipesDetailsMeals';
 
 // Existe dois router pro profile por causa do teste 10 e 11
 function Routes() {
@@ -21,9 +21,9 @@ function Routes() {
     <Switch>
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Foods } />
+      <Route exact path="/drinks" component={ Drinks } />
       <Route exact path="/perfil" component={ Profile } />
       <Route exact path="/profile" component={ Profile } />
-      <Route exact path="/drinks" component={ Drinks } />
       <Route exact path="/explore" component={ Explore } />
       <Route exact path="/explore/foods" component={ ExploreFoods } />
       <Route exact path="/explore/drinks" component={ ExploreDrinks } />
@@ -44,8 +44,8 @@ function Routes() {
       />
       <Route exact path="/done-recipes" component={ RecipesDone } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
-      <Route exact path="/foods/:id?" component={ RecipesDetailsFood } />
       <Route exact path="/drinks/:id?" component={ RecipesDetailsDrinks } />
+      <Route exact path="/foods/:id?" component={ RecipesDetailsMeals } />
     </Switch>
   );
 }
