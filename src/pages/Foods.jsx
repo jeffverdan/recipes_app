@@ -18,7 +18,6 @@ export default function Foods() {
 
   return (
     <div>
-
       <Header title="Foods" loadingSearch />
       <section>
         <button
