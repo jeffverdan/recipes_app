@@ -11,6 +11,9 @@ import fetchMeals, {
 function Provider({ children }) {
   // STATES do useState
   const [apiData, setApiData] = useState([]);
+  const [countrySelect, setCountrySelect] = useState([]);
+  const [filterCountry, setFilterCountry] = useState('All');
+  const [filterAll, setFilterAll] = useState([]);
   const [allDrinks, setAllDrinks] = useState([]);
   const [inProgressRecipes, setInProgressRecipes] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([
@@ -181,6 +184,12 @@ function Provider({ children }) {
     handleClick,
     handleAllClick,
     // DANIEL
+    filterAll,
+    setFilterAll,
+    filterCountry,
+    setFilterCountry,
+    countrySelect,
+    setCountrySelect,
     // JOHNATHAN
   };
 
