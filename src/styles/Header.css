@@ -1,0 +1,9 @@
+.header-conteiner {
+  align-items: center;
+  background-color: rgb(248, 181, 37);
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+}

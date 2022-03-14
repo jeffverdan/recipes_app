@@ -14,6 +14,7 @@ function Provider({ children }) {
   const [countrySelect, setCountrySelect] = useState([]);
   const [filterCountry, setFilterCountry] = useState('All');
   const [filterAll, setFilterAll] = useState([]);
+  const [receitaRandom, setReceitaRandom] = useState([]);
   const [allDrinks, setAllDrinks] = useState([]);
   const [inProgressRecipes, setInProgressRecipes] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([
@@ -185,6 +186,8 @@ function Provider({ children }) {
     setFilterCountry,
     countrySelect,
     setCountrySelect,
+    receitaRandom,
+    setReceitaRandom,
     // JOHNATHAN
   };
 

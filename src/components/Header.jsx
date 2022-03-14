@@ -5,6 +5,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Searchbar from './Searchbar';
 import SearchbarDrinks from './SearchbarDrinks';
+import '../styles/Header.css';
 
 // Title muda de acordo com a página e loadingSearch oculta o search dependendo da página(Req 10)
 export default function Header({ title, loadingSearch }) {
@@ -17,7 +18,7 @@ export default function Header({ title, loadingSearch }) {
   // }
 
   return (
-    <header>
+    <header className="header-conteiner">
       <div className="profileConteiner">
         <Link to="/profile">
           <img
