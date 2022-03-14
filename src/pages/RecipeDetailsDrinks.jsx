@@ -42,6 +42,16 @@ export default function RecipesDetailsDrinks({ match }) {
     strAlcoholic,
   } = filterID;
 
+  const receiveData = [{
+    id: idDrink,
+    type: 'drink',
+    nationality: '',
+    category: strCategory,
+    alcoholicOrNot: strAlcoholic,
+    name: strDrink,
+    image: strDrinkThumb,
+  }];
+
   // Logica retirada de https://stackoverflow.com/questions/37899422/splice-inside-object-keysobj-foreachfunctionindex
   const MAX_INGREDIENTS = 20;
   const filterApartIngredients = Object.keys(filterID).indexOf('strIngredient1'); // Retorna um numero do 'strIngredient1' até o final da lista
@@ -79,7 +89,7 @@ export default function RecipesDetailsDrinks({ match }) {
   return (
     <div>
       <Title title={ strDrink } img={ strDrinkThumb } />
-      <Buttons recipeData={ idDrink } type="drinks" />
+      <Buttons id={ idDrink } recipeData={ receiveData } type="drinks" />
       <h3 data-testid="recipe-category">{` ${strCategory} - ${strAlcoholic} `}</h3>
 
       <div>
