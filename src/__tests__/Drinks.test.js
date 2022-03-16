@@ -1,11 +1,10 @@
 import React from 'react';
-import { screen, cleanup, waitFor } from '@testing-library/react';
+import { screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AppContext from '../context/AppContext';
 import Provider from '../context/Provider';
 import renderWithRouter from '../renderWithRouter';
 import MainCard from '../components/MainCard';
-import App from '../App';
 import Drinks from '../pages/Drinks';
 import drinkTest, { btnsDrinks } from '../dataTests/dataTestFromDrinks';
 
@@ -103,22 +102,6 @@ describe('Tela Drinks', () => {
     expect(foodsH1).toBeDefined();
     expect(profileImg).toHaveAttribute('src', 'profileIcon.svg');
     expect(searchBarImg).toHaveAttribute('src', 'searchIcon.svg');
-  });
-
-  it('Botões de filtro estão presentes na tela', async () => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/drinks');
-
-    const btnAll = screen.getByRole('button', { name: /All/i });
-    // const btnOrdinaryDrink = await screen.findByRole(
-    //   'button', { name: /Ordinary Drink/i },
-    // );
-    // const btnCocktail = await screen.findAllByRole('button');
-    // await waitFor(() => screen.getByRole('button', { name: /Cocktail/i }), { timeout: 3000 });
-    screen.debug(btnCocktail);
-
-    expect(btnAll).toBeDefined();
-    // expect(btnOrdinaryDrink).toBeDefined();
   });
 
   it('Footer está presente na tela', async () => {
