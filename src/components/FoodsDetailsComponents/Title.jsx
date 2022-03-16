@@ -5,6 +5,7 @@ export default function Title({ title, img }) {
   return (
     <div>
       <img
+        className="w-100"
         src={ img }
         data-testid="recipe-photo"
         alt="Food"
