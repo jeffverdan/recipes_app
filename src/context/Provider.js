@@ -123,6 +123,7 @@ function Provider({ children }) {
     }
     fetchData();
   }, []);
+
   const handleClick = async (group, { target }) => {
     const [type, data] = await fetchFilterByCategory(group, target.name);
     const { name } = target;
@@ -176,7 +177,9 @@ function Provider({ children }) {
     dataDrinks,
     setDataDrinks,
     dataCategoryMeals,
+    setDataCategoryMeals, // está somente para uso nos testes end-to-end
     dataCategoryDrinks,
+    setDataCategoryDrinks,
     handleClick,
     handleAllClick,
     // DANIEL
