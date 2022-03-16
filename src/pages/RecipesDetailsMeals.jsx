@@ -194,7 +194,7 @@ export default function RecipesDetailsMeals({ match }) {
           </div>
         ) : (
           <div>
-            <h3 className="btn fixed-bottom">Recipe is done!</h3>
+            <h3 className="fixed-bottom">Recipe is done!</h3>
           </div>
         ) }
     </div>

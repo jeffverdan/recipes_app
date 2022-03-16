@@ -15,6 +15,8 @@ import FavoriteRecipes from '../pages/FavoriteRecipes';
 import RecipesDetailsDrinks from '../pages/RecipeDetailsDrinks';
 import RecipesDetailsMeals from '../pages/RecipesDetailsMeals';
 import NotFound from '../pages/NotFound';
+import RecipeInProgressMeals from '../pages/RecipeInProgressMeals';
+import RecipeInProgressDrinks from '../pages/RecipeInProgressDrinks';
 
 // Existe dois router pro profile por causa do teste 10 e 11
 function Routes() {
@@ -46,7 +48,9 @@ function Routes() {
       <Route exact path="/done-recipes" component={ RecipesDone } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
       <Route exact path="/drinks/:id?" component={ RecipesDetailsDrinks } />
+      <Route exact path="/drinks/:id?/in-progress" component={ RecipeInProgressDrinks } />
       <Route exact path="/foods/:id?" component={ RecipesDetailsMeals } />
+      <Route exact path="/foods/:id?/in-progress" component={ RecipeInProgressMeals } />
       <Route
         exact
         path="*"

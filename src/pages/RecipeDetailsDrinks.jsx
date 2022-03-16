@@ -53,7 +53,7 @@ export default function RecipesDetailsDrinks({ match }) {
   }];
 
   // Logica retirada de https://stackoverflow.com/questions/37899422/splice-inside-object-keysobj-foreachfunctionindex
-  const MAX_INGREDIENTS = 20;
+  const MAX_INGREDIENTS = 15;
   const filterApartIngredients = Object.keys(filterID).indexOf('strIngredient1'); // Retorna um numero do 'strIngredient1' até o final da lista
   const valuesApartIngredients = Object.values(filterID) // Retorna o valor da key acima até no maximo 20
     .splice(filterApartIngredients, MAX_INGREDIENTS);
