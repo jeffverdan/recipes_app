@@ -43,12 +43,7 @@ function Provider({ children }) {
       strArea: 'Italian',
       strInstructions: 'Bring a large pot of water to a boil. '
             + 'Add kosher salt to the boiling water,'
-            + 'then add the pasta. Cook according to the package '
-            + 'instructions, about 9 minutes.'
-            + 'taste. Bring to a boil and cook for 5 minutes. Remove '
-            + 'from the heat and add the chopped basil.\r\nDrain the '
-            + 'pasta and add it to the sauce. Garnish with Parmigiano-'
-            + 'Reggiano flakes and more basil and serve warm.',
+            + 'then add the pasta. Cook according to the package ',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
       strTags: 'Pasta,Curry',
       strYoutube: 'https://www.youtube.com/watch?v=1IszT_guI08',
@@ -61,8 +56,6 @@ function Provider({ children }) {
       idDrink: '178319',
       strDrink: 'Aquamarine',
       strDrinkAlternate: null,
-      strTags: null,
-      strVideo: null,
       strCategory: 'Cocktail',
       strIBA: null,
       strAlcoholic: 'Alcoholic',
@@ -74,8 +67,6 @@ function Provider({ children }) {
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       strIngredient1: 'Hpnotiq',
       strIngredient2: 'Pineapple Juice',
-      strImageSource: null,
-      strImageAttribution: null,
       strCreativeCommonsConfirmed: 'No',
       dateModified: null,
     },
@@ -89,28 +80,18 @@ function Provider({ children }) {
       strArea: 'Italian',
       strInstructions: 'Bring a large pot of water to a boil. '
             + 'Add kosher salt to the boiling water,'
-            + 'then add the pasta. Cook according to the package '
-            + 'instructions, about 9 minutes.'
-            + 'taste. Bring to a boil and cook for 5 minutes. Remove '
-            + 'from the heat and add the chopped basil.\r\nDrain the '
-            + 'pasta and add it to the sauce. Garnish with Parmigiano-'
             + 'Reggiano flakes and more basil and serve warm.',
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
       strTags: 'Pasta,Curry',
       strYoutube: 'https://www.youtube.com/watch?v=1IszT_guI08',
       strSource: null,
-      strImageSource: null,
-      strCreativeCommonsConfirmed: null,
       dateModified: null,
     },
     {
       idDrink: '178319',
       strDrink: 'Aquamarine',
       strDrinkAlternate: null,
-      strTags: null,
-      strVideo: null,
       strCategory: 'Cocktail',
-      strIBA: null,
       strAlcoholic: 'Alcoholic',
       strGlass: 'Martini Glass',
       strInstructions: 'Shake well in a shaker with ice.\r\nStrain in a martini glass.',
@@ -120,10 +101,6 @@ function Provider({ children }) {
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       strIngredient1: 'Hpnotiq',
       strIngredient2: 'Pineapple Juice',
-      strImageSource: null,
-      strImageAttribution: null,
-      strCreativeCommonsConfirmed: 'No',
-      dateModified: null,
     },
   ]);
   const [dataMeals, setDataMeals] = useState([]);
