@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import '../styles/MainCard.css';
 // import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 const copy = require('clipboard-copy');
 
@@ -60,6 +61,17 @@ const DoneCard = ({
         >
           Share
         </button>
+
+        <button
+          type="button"
+          // id="myButton1"
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          src={ blackHeartIcon }
+          // onClick={ () => { linkCopied(); } }
+        >
+          Favorite
+        </button>
+
         { isClicked && <span>Link copied!</span> }
         {strTags !== undefined
       && strTags !== null
