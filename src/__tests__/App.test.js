@@ -64,19 +64,28 @@ describe('Tela Login', () => {
   });
 
   it('O input de email, senha e botão estão presente na tela na rota "/"', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+    );
     const { location: { pathname } } = history;
     const inputEmail = screen.getByRole('textbox');
-    const inputPassword = screen.getByPlaceholderText('SENHA');
+    const inputPassword = screen.getByPlaceholderText(/senha/i);
     expect(pathname).toBe('/');
     expect(inputEmail).toBeDefined();
     expect(inputPassword).toBeDefined();
   });
 
   it('Ao inserir dados corretamente, e clicar no botão redireciona para "/foods"', () => {
-    const { history } = renderWithRouter(<App />);
+    const { history } = renderWithRouter(
+      <Provider>
+        <App />
+      </Provider>,
+    );
     const inputEmail = screen.getByRole('textbox');
-    const inputPassword = screen.getByPlaceholderText('SENHA');
+    const inputPassword = screen.getByPlaceholderText(/senha/i);
+    screen.debug(inputPassword);
     const btnEnter = screen.getByRole('button', { name: 'Enter' });
 
     userEvent.type(inputEmail, 'email@mail.com');
