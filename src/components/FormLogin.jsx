@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppContext from '../context/AppContext';
+import '../styles/FormLogin.css';
 
 const FormLogin = () => {
   const history = useHistory();
@@ -43,36 +44,39 @@ const FormLogin = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={ () => {} }>
-        <label htmlFor="email">
+    <section className="container-formlogin">
+      <h1>Recipes App</h1>
+      <form className="formLogin" onSubmit={ () => {} }>
+        <label htmlFor="email" className="input-email">
           <input
             data-testid="email-input"
             type="text"
             id="email"
             name="email"
-            placeholder="EMAIL"
+            placeholder="Email"
             onChange={ handleChangeEmail }
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password" className="input-password">
           <input
             data-testid="password-input"
             type="password"
             id="password"
             name="password"
-            placeholder="SENHA"
+            placeholder="Senha"
             onChange={ handleChangePassword }
           />
         </label>
-        <button
-          data-testid="login-submit-btn"
-          type="submit"
-          disabled={ !handleDisabled() }
-          onClick={ handleClick }
-        >
-          Enter
-        </button>
+        <div className="button-enter">
+          <button
+            data-testid="login-submit-btn"
+            type="submit"
+            disabled={ !handleDisabled() }
+            onClick={ handleClick }
+          >
+            Enter
+          </button>
+        </div>
       </form>
     </section>
   );

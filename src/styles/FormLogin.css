@@ -1,0 +1,50 @@
+.container-formlogin {
+  background-color: rgb(236, 230, 223);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0.1px 3px 8px;
+  margin-left: 50px;
+  margin-top: 150px;
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+.container-formlogin h1 {
+  margin-left: 40px;
+}
+
+.formLogin {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 80px;
+}
+
+.input-email input {
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.input-password input {
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.button-enter button {
+  background-image: linear-gradient(-180deg, #37aee2 0%, #1e96c8 100%);
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  font-size: 15px;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+  width: 100px;
+}
+
+.button-enter button:hover {
+  background-image: linear-gradient(-180deg, #1d95c9 0%, #17759c 100%);
+}

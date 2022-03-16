@@ -9,29 +9,37 @@ import '../styles/Footer.css';
 const Footer = () => {
   const history = useHistory();
   return (
-    <footer data-testid="footer">
-      <img
-        src={ drinkIcon }
-        alt="drinks"
-        data-testid="drinks-bottom-btn"
-        onClick={ () => history.push('/drinks') }
-        aria-hidden
-      />
-      <img
-        src={ exploreIcon }
-        alt="explore"
-        data-testid="explore-bottom-btn"
-        onClick={ () => history.push('/explore') }
-        aria-hidden
-      />
-      <img
-        src={ mealIcon }
-        alt="foods"
-        data-testid="food-bottom-btn"
-        onClick={ () => history.push('/foods') }
-        aria-hidden
-      />
-    </footer>
+    <section className="container-img">
+      <footer data-testid="footer">
+        <div className="img-footer">
+          <img
+            src={ drinkIcon }
+            alt="drinks"
+            data-testid="drinks-bottom-btn"
+            onClick={ () => history.push('/drinks') }
+            aria-hidden
+          />
+        </div>
+        <div className="img-footer">
+          <img
+            src={ exploreIcon }
+            alt="explore"
+            data-testid="explore-bottom-btn"
+            onClick={ () => history.push('/explore') }
+            aria-hidden
+          />
+        </div>
+        <div className="img-footer">
+          <img
+            src={ mealIcon }
+            alt="foods"
+            data-testid="food-bottom-btn"
+            onClick={ () => history.push('/foods') }
+            aria-hidden
+          />
+        </div>
+      </footer>
+    </section>
   );
 };
 
