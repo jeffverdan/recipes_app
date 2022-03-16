@@ -163,4 +163,16 @@ const mealTest = [
   },
 ];
 
+export const btnCategory = [
+  {
+    strCategory: 'Beef',
+  },
+  {
+    strCategory: 'Breakfast',
+  },
+  {
+    strCategory: 'Chicken',
+  },
+];
+
 export default mealTest;

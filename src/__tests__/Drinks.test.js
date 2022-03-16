@@ -1,36 +1,36 @@
 import React from 'react';
-import { screen, cleanup } from '@testing-library/react';
+import { screen, cleanup, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AppContext from '../context/AppContext';
 import Provider from '../context/Provider';
 import renderWithRouter from '../renderWithRouter';
 import MainCard from '../components/MainCard';
-import mealTest, { btnCategory } from '../dataTests/dataTests';
-// import App from '../App';
-import Foods from '../pages/Foods';
+import App from '../App';
+import Drinks from '../pages/Drinks';
+import drinkTest, { btnsDrinks } from '../dataTests/dataTestFromDrinks';
 
 const QUANTITY_IMAGES = 3;
 const QUANTITY_BUTTONS = 4;
 
-describe('Tela Foods', () => {
+describe('Tela Drinks', () => {
   afterEach(() => {
     cleanup();
   });
-  it('Se exibe os cards do array meals', () => {
+  it('Se exibe os cards do array drinks', () => {
     renderWithRouter(
       <Provider>
         <AppContext.Consumer>
           {
-            ({ dataMeals, setDataMeals }) => (
+            ({ dataDrinks, setDataDrinks }) => (
               <>
                 <span>
                   {
-                    dataMeals.map((meal, index) => (
+                    dataDrinks.map((drink, index) => (
                       <MainCard
-                        key={ meal.idMeal }
-                        idMeal={ meal.idMeal }
-                        strMeal={ meal.strMeal }
-                        strMealThumb={ meal.strMealThumb }
+                        key={ drink.idDrink }
+                        idMeal={ drink.idDrink }
+                        strMeal={ drink.strDrink }
+                        strMealThumb={ drink.strDrinkThumb }
                         index={ index }
                       />
                     ))
@@ -38,7 +38,7 @@ describe('Tela Foods', () => {
                 </span>
                 <button
                   type="button"
-                  onClick={ () => setDataMeals(mealTest) }
+                  onClick={ () => setDataDrinks(drinkTest) }
                 >
                   Take from API
                 </button>
@@ -50,19 +50,20 @@ describe('Tela Foods', () => {
     );
 
     const button = screen.getByRole('button', { name: /Take from API/i });
+
     userEvent.click(button);
     const section = screen.getAllByRole('img');
     expect(section).toHaveLength(QUANTITY_IMAGES);
   });
 
-  it('Testa função setCategoryMeals', () => {
+  it('Testa função setDataCategoryDrinks', () => {
     renderWithRouter(
       <Provider>
         <AppContext.Consumer>
           {
-            ({ dataCategoryMeals, setDataCategoryMeals }) => (
+            ({ dataCategoryDrinks, setDataCategoryDrinks }) => (
               <>
-                {dataCategoryMeals.map(({ strCategory }) => (
+                {dataCategoryDrinks.map(({ strCategory }) => (
                   <button
                     type="button"
                     key={ strCategory }
@@ -72,7 +73,7 @@ describe('Tela Foods', () => {
                 ))}
                 <button
                   type="button"
-                  onClick={ () => setDataCategoryMeals(btnCategory) }
+                  onClick={ () => setDataCategoryDrinks(btnsDrinks) }
                 >
                   Test Buttons
                 </button>
@@ -89,26 +90,14 @@ describe('Tela Foods', () => {
     expect(btnsCtgr).toHaveLength(QUANTITY_BUTTONS);
   });
 
-  // v1
-  // it('header está presente na página', () => {
-  //   const { history } = renderWithRouter(<App />);
-  //   history.push('/foods');
-  //   const foodsH1 = screen.getByRole('heading', { level: 1, name: /Foods/i });
-  //   expect(foodsH1).toBeDefined();
-  // });
-
-  it('Header, ícones profile e search estão presente na página', () => {
+  it('Header, ícones profile e search estão presente na página Drinks', () => {
     renderWithRouter(
       <Provider>
-        <Foods />
+        <Drinks />
       </Provider>,
     );
 
-    // const { location: { pathname } } = history;
-    // expect(pathname).toBe('/foods');
-    // const { dataMeals, setDataMeals } = useContext(AppContext);
-    // setDataMeals(mealTest);
-    const foodsH1 = screen.getByRole('heading', { level: 1, name: 'Foods' });
+    const foodsH1 = screen.getByRole('heading', { level: 1, name: /Drinks/i });
     const profileImg = screen.getByAltText('Perfil');
     const searchBarImg = screen.getByAltText('Search');
     expect(foodsH1).toBeDefined();
@@ -117,31 +106,25 @@ describe('Tela Foods', () => {
   });
 
   it('Botões de filtro estão presentes na tela', async () => {
-    renderWithRouter(
-      <Provider>
-        <Foods />
-      </Provider>,
-    );
-    // Toda vez q usar find tem q usar async/await
-    // Não consigo usar um forEach pra pegar todos os botões
+    const { history } = renderWithRouter(<App />);
+    history.push('/drinks');
+
     const btnAll = screen.getByRole('button', { name: /All/i });
-    const btnBeef = await screen.findByRole('button', { name: /Beef/i });
-    const btnBreakfast = await screen.findByRole('button', { name: /Breakfast/i });
-    const btnChicken = await screen.findByRole('button', { name: /Chicken/i });
-    const btnDessert = await screen.findByRole('button', { name: /Dessert/i });
-    const btnGoat = await screen.findByRole('button', { name: /Goat/i });
+    // const btnOrdinaryDrink = await screen.findByRole(
+    //   'button', { name: /Ordinary Drink/i },
+    // );
+    // const btnCocktail = await screen.findAllByRole('button');
+    // await waitFor(() => screen.getByRole('button', { name: /Cocktail/i }), { timeout: 3000 });
+    screen.debug(btnCocktail);
+
     expect(btnAll).toBeDefined();
-    expect(btnBeef).toBeDefined();
-    expect(btnBreakfast).toBeDefined();
-    expect(btnChicken).toBeDefined();
-    expect(btnDessert).toBeDefined();
-    expect(btnGoat).toBeDefined();
+    // expect(btnOrdinaryDrink).toBeDefined();
   });
 
   it('Footer está presente na tela', async () => {
     renderWithRouter(
       <Provider>
-        <Foods />
+        <Drinks />
       </Provider>,
     );
 
