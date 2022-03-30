@@ -6,6 +6,10 @@ Este projeto de Web App de Receitas onde você começa fazendo um login e após 
 
 - HTML, CSS, JavaScript, Bootstrap, React, Hooks, API context, LocalStorage.
 
+# Para inciciar o projeto:
+- npm install
+- npm start
+
 # Equipe:
 
 [Abner Sousa](https://github.com/abnerferreiradesousa), [Filipe Braga](https://github.com/filipebfbraga), [Daniel Castro](https://github.com/DanielCastroAlves) e [Jonathan Santos](https://github.com/jonathanplets).
