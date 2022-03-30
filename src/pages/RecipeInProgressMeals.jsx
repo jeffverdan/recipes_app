@@ -89,13 +89,14 @@ export default function RecipeInProgressMeals({ match }) {
   }];
 
   return (
-    <div className="col">
+    <div className="w-100 p-2 col">
       <div>
         <Title title={ strMeal } img={ strMealThumb } />
+        <br />
         <Buttons id={ idMeals } recipeData={ receiveData } type="foods" />
       </div>
 
-      <div className="col">
+      <div>
         <spam data-testid="recipe-category">{strCategory}</spam>
         <p>Ingredients:</p>
         {IngredientsList.map((ingredient, id) => (

@@ -102,8 +102,9 @@ export default function RecipesDetailsMeals({ match }) {
   }
 
   return (
-    <div>
+    <div className="m-0 col mw-50">
       <Title title={ strMeal } img={ strMealThumb } />
+      <br />
       <Buttons id={ idMeals } recipeData={ receiveData } type="foods" />
       <h3 data-testid="recipe-category">{ strCategory }</h3>
 
@@ -120,7 +121,7 @@ export default function RecipesDetailsMeals({ match }) {
         ))}
       </div>
 
-      <div>
+      <div className="w-90 border-0">
         <h3>Instructions:</h3>
         <span data-testid="instructions">{ strInstructions }</span>
       </div>
@@ -165,7 +166,7 @@ export default function RecipesDetailsMeals({ match }) {
       {/* //Inicio da lógica do botão de rodapé */}
       {doneRecipes[0].doneDate === ''
         ? (
-          <div>
+          <div className="col mw-75 p-1">
             {Object.keys(foodsInProgress).some((id) => Number(id) !== idMeals)
               ? (
                 <Link to={ `/foods/${idMeals}/in-progress` }>
@@ -182,7 +183,7 @@ export default function RecipesDetailsMeals({ match }) {
               : (
                 <Link to={ `/foods/${idMeals}/in-progress` }>
                   <button
-                    className="fixed-bottom"
+                    className="btn-primary fixed-bottom"
                     type="button"
                     data-testid="start-recipe-btn"
                     onClick={ startRecipes }
@@ -194,7 +195,7 @@ export default function RecipesDetailsMeals({ match }) {
           </div>
         ) : (
           <div>
-            <h3 className="fixed-bottom">Recipe is done!</h3>
+            <h3 className="btn fixed-bottom">Recipe is done!</h3>
           </div>
         ) }
     </div>

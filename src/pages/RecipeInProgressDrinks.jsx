@@ -70,13 +70,13 @@ export default function RecipeInProgressDrinks({ match }) {
     ingredient !== null && ingredient !== ''));
 
   return (
-    <div className="col">
+    <div className="p-3 col">
       <div>
         <Title title={ strDrink } img={ strDrinkThumb } />
         <Buttons id={ idDrink } recipeData={ receiveData } type="drinks" />
       </div>
 
-      <div className="col">
+      <div className="">
         <spam data-testid="recipe-category">{ strCategory }</spam>
         <p>Ingredients:</p>
         {IngredientsList.map((ingredient, id) => (
@@ -97,13 +97,13 @@ export default function RecipeInProgressDrinks({ match }) {
           </ul>
         ))}
       </div>
-      <div className="col">
+      <div className="">
         <h3>Instructions:</h3>
         <p data-testid="instructions">{ strInstructions }</p>
       </div>
       <Link to="/done-recipes">
         <button
-          className="btn btn-primary col"
+          className="btn btn-primary"
           disabled={ IngredientsList.length !== ingredientsLocal.length }
           type="button"
           data-testid="finish-recipe-btn"

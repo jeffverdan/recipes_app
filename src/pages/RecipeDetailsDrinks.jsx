@@ -87,10 +87,18 @@ export default function RecipesDetailsDrinks({ match }) {
   }
 
   return (
-    <div>
+    <div className="w-100 p-2 col">
       <Title title={ strDrink } img={ strDrinkThumb } />
+      <br />
       <Buttons id={ idDrink } recipeData={ receiveData } type="drinks" />
-      <h3 data-testid="recipe-category">{` ${strCategory} - ${strAlcoholic} `}</h3>
+      <div className="m-0 row mw-50">
+        <h3
+          className="m-0 mw-50"
+          data-testid="recipe-category"
+        >
+          {` ${strCategory} - ${strAlcoholic} `}
+        </h3>
+      </div>
 
       <div>
         <p>Ingredients:</p>
@@ -104,10 +112,10 @@ export default function RecipesDetailsDrinks({ match }) {
           </ul>
         ))}
       </div>
-
-      <div>
+      <br />
+      <div className="w-90 border-0">
         <h3>Instructions:</h3>
-        <span data-testid="instructions">{ strInstructions }</span>
+        <p data-testid="instructions">{ strInstructions }</p>
       </div>
 
       <div>
@@ -150,12 +158,12 @@ export default function RecipesDetailsDrinks({ match }) {
       {/* //Inicio da lógica do botão de rodapé */}
       {doneRecipes[0].doneDate === ''
         ? (
-          <div>
+          <div className="col mw-75 p-1">
             {Object.keys(drinksInProgress).some((id) => Number(id) !== idDrink)
               ? (
                 <Link to={ `/drinks/${idDrink}/in-progress` }>
                   <button
-                    className="fixed-bottom"
+                    className="btn btn-success fixed-bottom"
                     type="button"
                     data-testid="start-recipe-btn"
                     onClick={ startRecipes }
@@ -167,7 +175,7 @@ export default function RecipesDetailsDrinks({ match }) {
               : (
                 <Link to={ `/drinks/${idDrink}/in-progress` }>
                   <button
-                    className="fixed-bottom"
+                    className="btn-primary fixed-bottom"
                     type="button"
                     data-testid="start-recipe-btn"
                     onClick={ startRecipes }

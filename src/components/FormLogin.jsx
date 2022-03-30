@@ -44,12 +44,21 @@ const FormLogin = () => {
   };
 
   return (
-    <section className="container-formlogin">
-      <h1>Recipes App</h1>
+    <section className="col justify-content-center container-formlogin">
+      <img alt="Yummy" src="https://media1.giphy.com/media/SX6Nht6OviI03lPFPz/giphy.gif?cid=790b761155a987def12bae18b4b081db5d81bc4746e6355e&rid=giphy.gif&ct=g" />
+      <p className="display-5">Recipes App</p>
       <form className="formLogin" onSubmit={ () => {} }>
-        <label htmlFor="email" className="input-email">
+        <label htmlFor="email" className=" input-group mb-3 input-email">
+          <span
+            className="input-group-text"
+            id="basic-addon1"
+          >
+            @
+          </span>
           <input
+            className="form-control"
             data-testid="email-input"
+            aria-describedby="basic-addon1"
             type="text"
             id="email"
             name="email"
@@ -59,6 +68,7 @@ const FormLogin = () => {
         </label>
         <label htmlFor="password" className="input-password">
           <input
+            className="form-control"
             data-testid="password-input"
             type="password"
             id="password"
@@ -67,8 +77,9 @@ const FormLogin = () => {
             onChange={ handleChangePassword }
           />
         </label>
-        <div className="button-enter">
+        <div>
           <button
+            className="btn btn-primary"
             data-testid="login-submit-btn"
             type="submit"
             disabled={ !handleDisabled() }

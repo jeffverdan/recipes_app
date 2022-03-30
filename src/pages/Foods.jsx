@@ -24,6 +24,7 @@ export default function Foods() {
         <button
           type="button"
           data-testid="All-category-filter"
+          className="btn btn-secondary"
           onClick={ () => handleAllClick('allMeals') }
         >
           All
@@ -31,6 +32,7 @@ export default function Foods() {
         {dataCategoryMeals.slice(0, LIM_BUTTON).map(({ strCategory }, index) => (
           <button
             data-testid={ `${strCategory}-category-filter` }
+            className="btn btn-secondary"
             key={ index }
             name={ strCategory }
             onClick={ (e) => handleClick('meals', e) }
